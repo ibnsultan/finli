@@ -32,38 +32,43 @@
                 <div class="space-y-2">
                     <div class="text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
                     
-                    <a href="dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                    <a href="/dashboard/dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fa-solid fa-grid-2"></i>
                         <span>Dashboard</span>
                     </a>
 
-                    <a href="transactions.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                    <a href="/dashboard/transactions.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fas fa-exchange-alt"></i>
                         <span>Transaction</span>
                     </a>
                     
-                    <a href="wallet.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                    <a href="/dashboard/wallet.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fas fa-wallet"></i>
                         <span>My Wallet</span>
                     </a>
                     
-                    <a href="analytics.html" class="flex items-center space-x-3 px-5 py-3 text-white bg-[#313131] w-full">
+                    <a href="/dashboard/analytics.html" class="flex items-center space-x-3 px-5 py-3 text-white bg-[#313131] w-full">
                         <i class="fas fa-chart-pie"></i>
                         <span>Analytics</span>
                     </a>
                 </div>
 
                 <div class="mt-8">
-                    <div class="text-xs text-gray-400 px-4 uppercase tracking-wider mb-4">OTHER</div>
+                    <div class="text-xs text-gray-400 px-4 uppercase tracking-wider mb-4">COMPONENTS</div>
                     
-                    <a href="#" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
-                        <i class="fas fa-palette"></i>
-                        <span>Theme</span>
+                    <a href="/components/offcanvas.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-table-layout"></i>
+                        <span>Offcanvas</span>
                     </a>
                     
-                    <a href="#" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Security</span>
+                    <a href="/components/modal.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-window-restore"></i>
+                        <span>Modal</span>
+                    </a>
+
+                    <a href="/components/accordion.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Accordion</span>
                     </a>
                 </div>
 
@@ -79,23 +84,23 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-y-auto lg:ml-0 bg-white">
             <!-- Header -->
-            <header class="px-4 lg:px-6 py-3 sticky">
+            <header class="px-4 lg:px-6 py-3 sticky top-0 bg-white z-30">
                 <div class="flex items-center justify-between w-full mx-auto p-3 max-w-[1320px]">
                     <!-- Mobile menu button and title -->
                     <div class="flex items-center space-x-4">
                         <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
                             <i class="fas fa-bars text-gray-600"></i>
                         </button>
-                        <h1 class="text-xl lg:text-4xl font-bold text-gray-900">Analytics</h1>
+                        <h1 class="text-xl lg:text-4xl font-bold text-gray-900">Dashboard</h1>
                     </div>
                     
-                    <div class="flex items-center space-x-2 lg:space-x-4">
+                    <div class="flex items-center space-x-2 lg:space-x-4 relative z-40">
                         <!-- Search -->
                         <div class="relative hidden md:block">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-search text-gray-400"></i>
                             </div>
-                            <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 w-60 lg:w-80 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 w-60 lg:w-80 rounded-lg border-0 focus:border-transparent">
                         </div>
                         
                         <!-- Mobile search button -->
@@ -103,18 +108,86 @@
                             <i class="fas fa-search text-gray-600"></i>
                         </button>
                         
-                        <!-- Notification -->
-                        <div class="relative">
-                            <button class="p-2 rounded-lg hover:bg-gray-100 relative">
+                        <!-- Notification Dropdown -->
+                        <div class="relative z-50">
+                            <button class="w-10 aspect-square rounded-full border border-gray-200 hover:bg-gray-100 relative" data-tw-toggle="dropdown" data-tw-target="#notificationDropdown">
                                 <i class="fas fa-bell text-gray-600"></i>
                                 <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">1</span>
                             </button>
+                            <!-- Notification Dropdown Menu -->
+                            <div id="notificationDropdown" class="dropdown-menu fixed md:absolute right-0 w-72 mt-2 p-0 rounded-lg shadow-lg border border-gray-200">
+                                <div class="p-4 border-b border-gray-100">
+                                    <div class="flex items-center justify-between">
+                                        <h5 class="text-base font-semibold">Notifications</h5>
+                                        <span class="text-xs text-blue-600 font-medium cursor-pointer">Mark all as read</span>
+                                    </div>
+                                </div>
+                                <div class="max-h-72 overflow-y-auto">
+                                    <a href="#" class="dropdown-item flex p-4 hover:bg-gray-50 border-b border-gray-100">
+                                        <div class="flex-shrink-0 mr-3">
+                                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-money-bill text-blue-600"></i>
+                                            </div>
+                                        </div>
+                                        <div class="w-full">
+                                            <div class="flex justify-between">
+                                                <p class="text-sm font-medium text-gray-900">Payment Received</p>
+                                                <span class="text-xs text-gray-500">2m ago</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500">You received $250 from John Doe</p>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-item flex p-4 hover:bg-gray-50">
+                                        <div class="flex-shrink-0 mr-3">
+                                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-exclamation-circle text-red-600"></i>
+                                            </div>
+                                        </div>
+                                        <div class="w-full">
+                                            <div class="flex justify-between">
+                                                <p class="text-sm font-medium text-gray-900">Low Balance Alert</p>
+                                                <span class="text-xs text-gray-500">1h ago</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500">Your savings account balance is below $100</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="p-3 text-center border-t border-gray-100">
+                                    <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-800">View All Notifications</a>
+                                </div>
+                            </div>
                         </div>
                         
-                        <!-- Profile -->
-                        <div class="flex items-center space-x-3">
-                            <img src="/assets/images/people/avatar-10.jpg" alt="Profile" class="w-8 h-8 rounded-full">
-                            <i class="fas fa-chevron-down text-gray-400 hidden sm:block"></i>
+                        <!-- Profile Dropdown -->
+                        <div class="relative z-50">
+                            <div class="flex items-center space-x-3 p-1 cursor-pointer rounded-full border border-gray-200" data-tw-toggle="dropdown" data-tw-target="#profileDropdown">
+                                <img src="/assets/images/people/avatar-10.jpg" alt="Profile" class="w-8 h-8 rounded-full">
+                                <i class="fas fa-chevron-down text-gray-400 hidden sm:block"></i>
+                            </div>
+                            <!-- Profile Dropdown Menu -->
+                            <div id="profileDropdown" class="dropdown-menu fixed md:absolute right-0 w-48 mt-2 py-2">
+                                <div class="px-4 py-3 border-b border-gray-100">
+                                    <p class="text-sm font-medium text-gray-900">John Doe</p>
+                                    <p class="text-xs text-gray-500">john.doe@example.com</p>
+                                </div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-user mr-2 w-4"></i>
+                                    My Profile
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-cog mr-2 w-4"></i>
+                                    Settings
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-wallet mr-2 w-4"></i>
+                                    My Wallet
+                                </a>
+                                <div class="border-t border-gray-100 my-1"></div>
+                                <a href="/auth/login.html" class="dropdown-item text-red-600">
+                                    <i class="fas fa-sign-out-alt mr-2 w-4"></i>
+                                    Sign out
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -273,7 +346,13 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="/assets/js/script.js"></script>
+
+    <!-- Component scripts -->
+    <script src="/assets/js/components/dropdown.js"></script>
+
+    <!-- Plugins and page specific scripts  -->
     <script src="/assets/plugins/echarts@560/echarts.min.js"></script>
     <script src="/assets/js/pages/analytics.js"></script>
 </body>
