@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal - Finli</title>
+
+    <!-- icons and fonts -->
+    <link rel="stylesheet" href="/assets/fonts/fontawesome/all.css">
+
+    <!-- Main stylesheets -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+   
+</head>
+<body class="bg-white">
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden hidden"></div>
+
+    <div class="flex h-screen relative">
+        <!-- Sidebar -->
+        <div id="sidebar" class="w-64 bg-[#1a1a1a] text-white flex flex-col fixed lg:relative z-50 h-full transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+            <!-- Logo -->
+            <div class="p-6 border-b border-gray-700">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold">
+                        Fin<span class="text-blue-500">li</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="flex-1 py-6">
+                <div class="space-y-2">
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
+                    
+                    <a href="/dashboard/dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white bg-[#313131] w-full">
+                        <i class="fa-solid fa-grid-2"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="/dashboard/transactions.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Transaction</span>
+                    </a>
+                    
+                    <a href="/dashboard/wallet.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-wallet"></i>
+                        <span>My Wallet</span>
+                    </a>
+                    
+                    <a href="/dashboard/analytics.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="mt-8">
+                    <div class="text-xs text-gray-400 px-4 uppercase tracking-wider mb-4">COMPONENTS</div>
+                    
+                    <a href="/components/offcanvas.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-table-layout"></i>
+                        <span>Offcanvas</span>
+                    </a>
+                    
+                    <a href="/components/modal.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full bg-[#313131]">
+                        <i class="fas fa-window-restore"></i>
+                        <span>Modal</span>
+                    </a>
+                    
+                    <a href="/components/accordion.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Accordion</span>
+                    </a>
+                </div>
+
+                <div class="absolute bottom-0 w-full">                    
+                    <a href="settings.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-cog"></i>
+                        <span>Setting</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-y-auto lg:ml-0 bg-white">
+            <!-- Header -->
+            <header class="px-4 lg:px-6 py-3 sticky">
+                <div class="flex items-center justify-between w-full mx-auto p-3 max-w-[1320px]">
+                    <!-- Mobile menu button and title -->
+                    <div class="flex items-center space-x-4">
+                        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-bars text-gray-600"></i>
+                        </button>
+                        <h1 class="hidden md:block text-xl lg:text-4xl font-bold text-gray-900">Modal</h1>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2 lg:space-x-4">
+                        <!-- Search -->
+                        <div class="relative hidden md:block">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 w-60 lg:w-80 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <!-- Mobile search button -->
+                        <button class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-search text-gray-600"></i>
+                        </button>
+                        
+                        <!-- Notification -->
+                        <div class="relative">
+                            <button class="p-2 rounded-lg hover:bg-gray-100 relative">
+                                <i class="fas fa-bell text-gray-600"></i>
+                                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">1</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Profile -->
+                        <div class="flex items-center space-x-3">
+                            <img src="/assets/images/people/avatar-10.jpg" alt="Profile" class="w-8 h-8 rounded-full">
+                            <i class="fas fa-chevron-down text-gray-400 hidden sm:block"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="mx-auto w-full p-3 lg:p-6 max-w-[1320px]">
+                <!-- Documentation Header -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Modal Component Documentation</h2>
+                    <p class="text-gray-600">Modal dialogs are popup windows that appear on top of the main content, requiring user interaction before returning to the main interface. They're perfect for confirmations, forms, and alerts.</p>
+                </div>
+
+                <!-- Standard Modal Section -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Standard Modal</h3>
+                    
+                    <!-- Button Examples -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                        <button data-tw-toggle="modal" data-tw-target="#basicModal" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-window-maximize mr-2"></i>Basic Modal
+                        </button>
+                        <button data-tw-toggle="modal" data-tw-target="#formModal" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-edit mr-2"></i>Form Modal
+                        </button>
+                        <button data-tw-toggle="modal" data-tw-target="#confirmationModal" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-question-circle mr-2"></i>Confirmation
+                        </button>
+                        <button data-tw-toggle="modal" data-tw-target="#alertModal" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>Alert
+                        </button>
+                    </div>
+
+                    <!-- Code Examples -->
+                    <div>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-medium text-gray-800 mb-2">Basic Modal:</h5>
+                                <pre class="rounded-md text-sm overflow-x-auto"><code class="language-html">&lt;button data-tw-toggle="modal" data-tw-target="#basicModal"&gt;Open Modal&lt;/button&gt;
+
+&lt;div id="basicModal" class="modal"&gt;
+    &lt;div class="modal-dialog"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;span class="modal-close"&gt;&times;&lt;/span&gt;
+            &lt;h2 class="text-xl font-semibold"&gt;Modal Title&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;
+            &lt;p&gt;This is your modal content.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-footer"&gt;
+            &lt;button class="bg-blue-600 text-white px-4 py-2 rounded-lg"&gt;Submit&lt;/button&gt;
+            &lt;button data-tw-dismiss="modal" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg"&gt;Cancel&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Sizes Section -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Modal Sizes</h3>
+                    
+                    <!-- Button Examples -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <button data-tw-toggle="modal" data-tw-target="#smallModal" class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-compress-alt mr-2"></i>Small Modal
+                        </button>
+                        <button data-tw-toggle="modal" data-tw-target="#basicModal" class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-expand mr-2"></i>Default Size
+                        </button>
+                        <button data-tw-toggle="modal" data-tw-target="#largeModal" class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-expand-alt mr-2"></i>Large Modal
+                        </button>
+                    </div>
+
+                    <!-- Code Example -->
+                    <div class="">
+                        <pre class="rounded-md text-sm overflow-x-auto"><code class="language-html">&lt;!-- Small Modal --&gt;
+&lt;div id="smallModal" class="modal"&gt;
+    &lt;div class="modal-dialog modal-sm"&gt;
+        &lt;!-- Modal content --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Default Modal --&gt;
+&lt;div id="defaultModal" class="modal"&gt;
+    &lt;div class="modal-dialog"&gt;
+        &lt;!-- Modal content --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Large Modal --&gt;
+&lt;div id="largeModal" class="modal"&gt;
+    &lt;div class="modal-dialog modal-lg"&gt;
+        &lt;!-- Modal content --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Usage Instructions -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Usage Instructions</h3>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                        <h4 class="font-semibold text-blue-900 mb-4">Getting Started:</h4>
+                        <ol class="list-decimal list-inside space-y-2 text-blue-800">
+                            <li>Include the modal CSS classes in your Tailwind build</li>
+                            <li>Add the modal JavaScript component</li>
+                            <li>Use <code class="bg-blue-100 px-2 py-1 rounded">data-tw-toggle="modal"</code> on trigger buttons</li>
+                            <li>Set <code class="bg-blue-100 px-2 py-1 rounded">data-tw-target="#yourModalId"</code> to target specific modal</li>
+                            <li>Use <code class="bg-blue-100 px-2 py-1 rounded">data-tw-dismiss="modal"</code> on close buttons or the X button</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- CSS Classes Reference -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">CSS Classes Reference</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse border border-gray-300">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Class</th>
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.modal</code></td>
+                                    <td class="border border-gray-300 px-4 py-2">Base modal class with overlay and positioning</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.modal-dialog</code></td>
+                                    <td class="border border-gray-300 px-4 py-2">The modal container with background and shadow</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.modal-header</code></td>
+                                    <td class="border border-gray-300 px-4 py-2">Modal header section with title and close button</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.modal-body</code></td>
+                                    <td class="border border-gray-300 px-4 py-2">Modal content section</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.modal-footer</code></td>
+                                    <td class="border border-gray-300 px-4 py-2">Modal footer with action buttons</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.modal-sm</code></td>
+                                    <td class="border border-gray-300 px-4 py-2">Small modal width variant</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.modal-lg</code></td>
+                                    <td class="border border-gray-300 px-4 py-2">Large modal width variant</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.modal-close</code></td>
+                                    <td class="border border-gray-300 px-4 py-2">Close button styling</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.modal-show</code></td>
+                                    <td class="border border-gray-300 px-4 py-2">Shows the modal (applied by JS)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- JavaScript API -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">JavaScript API</h3>
+                    <div class="">
+                        <pre class="rounded-md text-sm overflow-x-auto"><code class="language-javascript">// Create new modal instance
+const modal = new TwModal(document.getElementById('myModal'));
+
+// Methods
+modal.show();  // Open the modal
+modal.hide();  // Close the modal
+modal.toggle(); // Toggle modal state
+
+// Events
+document.getElementById('myModal').addEventListener('modal:show', function() {
+    console.log('Modal is opening');
+});
+
+document.getElementById('myModal').addEventListener('modal:hide', function() {
+    console.log('Modal is closing');
+});</code></pre>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Basic Modal -->
+    <div id="basicModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2 class="text-xl font-semibold">Basic Modal</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="text-gray-700 mb-4">This is a basic modal dialog with standard components.</p>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-blue-800 mb-2">Modal Components:</h4>
+                    <ul class="list-disc list-inside text-sm text-blue-700">
+                        <li>Header with title and close button</li>
+                        <li>Body for main content</li>
+                        <li>Footer with action buttons</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">Submit</button>
+                <button data-tw-dismiss="modal" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition-colors ml-2">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Form Modal -->
+    <div id="formModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="modal-close">&times;</span>
+                <h2 class="text-xl font-semibold">Contact Form</h2>
+            </div>
+            <div class="modal-body">
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="john@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                        <textarea class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-transparent" rows="3" placeholder="Your message here"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors">Send Message</button>
+                <button data-tw-dismiss="modal" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition-colors ml-2">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-header">
+                <h2 class="text-xl font-semibold">Confirm Action</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-question-circle text-purple-600 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-center text-gray-700">Are you sure you want to proceed with this action?</p>
+                <p class="text-center text-gray-500 text-sm mt-2">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer flex justify-center">
+                <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors">Confirm</button>
+                <button data-tw-dismiss="modal" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition-colors ml-2">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alert Modal -->
+    <div id="alertModal" class="modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-header bg-red-600 text-white">
+                <h2 class="text-xl font-semibold">Alert</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="text-center text-red-600 font-semibold mb-2">Important Security Notice</p>
+                <p class="text-center text-gray-700">Your account password will expire in 3 days. Please update it as soon as possible.</p>
+            </div>
+            <div class="modal-footer flex justify-center">
+                <button data-tw-dismiss="modal" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">Acknowledge</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Small Modal -->
+    <div id="smallModal" class="modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-header">
+                <h2 class="text-xl font-semibold">Small Modal</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="text-gray-700">This is a compact modal with reduced width.</p>
+                <p class="text-gray-500 text-sm mt-2">Perfect for quick confirmations and simple messages.</p>
+            </div>
+            <div class="modal-footer">
+                <button data-tw-dismiss="modal" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition-colors">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Large Modal -->
+    <div id="largeModal" class="modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-header">
+                <h2 class="text-xl font-semibold">Large Modal</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="text-gray-700 mb-4">This is an expanded modal with increased width for displaying more content.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Left Content</h4>
+                        <p class="text-sm text-gray-600">Large modals provide more space for complex layouts and multiple columns of content.</p>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Right Content</h4>
+                        <p class="text-sm text-gray-600">This gives you plenty of room for details, images, or complex forms.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">Action</button>
+                <button data-tw-dismiss="modal" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition-colors ml-2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application main and componentscripts -->
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/components/modal.js"></script>
+    
+
+    <!-- custom scripts -->
+    <script src="/assets/plugins/echarts@560/echarts.min.js"></script>
+
+    <!-- page demo scripts -->
+    <script>
+        // Initialize syntax highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            hljs.highlightAll();
+            
+            // Add language classes to code blocks if they don't have them
+            document.querySelectorAll('pre code').forEach((block) => {
+                if (!block.classList.contains('language-html') && 
+                    !block.classList.contains('language-javascript')) {
+                    if (block.textContent.includes('<!')) {
+                        block.classList.add('language-html');
+                    } else if (block.textContent.includes('function') || 
+                               block.textContent.includes('const ') || 
+                               block.textContent.includes('document.')) {
+                        block.classList.add('language-javascript');
+                    }
+                }
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+</body>
+</html>

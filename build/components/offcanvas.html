@@ -15,39 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     
-    <!-- Shiki syntax highlighting -->
-    <script type="module">
-        import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
-        
-        window.highlightCode = async function() {
-            const codeBlocks = document.querySelectorAll('pre code[data-language]');
-            
-            for (const block of codeBlocks) {
-                const code = block.textContent;
-                const language = block.getAttribute('data-language');
-                
-                try {
-                    const html = await codeToHtml(code, {
-                        lang: language,
-                        theme: 'github-dark'
-                    });
-                    
-                    // Extract just the code part from the generated HTML
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const pre = doc.querySelector('pre');
-                    
-                    if (pre) {
-                        // Replace the parent pre element
-                        block.parentElement.outerHTML = pre.outerHTML;
-                    }
-                } catch (error) {
-                    console.warn('Failed to highlight code block:', error);
-                }
-            }
-        }
-    </script>
-    
 </head>
 <body class="bg-white">
     <!-- Mobile menu overlay -->
@@ -73,22 +40,22 @@
                 <div class="space-y-2">
                     <div class="text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
                     
-                    <a href="dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white bg-[#313131] w-full">
+                    <a href="/dashboard/dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fa-solid fa-grid-2"></i>
                         <span>Dashboard</span>
                     </a>
 
-                    <a href="transactions.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                    <a href="/dashboard/transactions.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fas fa-exchange-alt"></i>
                         <span>Transaction</span>
                     </a>
                     
-                    <a href="wallet.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                    <a href="/dashboard/wallet.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fas fa-wallet"></i>
                         <span>My Wallet</span>
                     </a>
                     
-                    <a href="analytics.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                    <a href="/dashboard/analytics.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fas fa-chart-pie"></i>
                         <span>Analytics</span>
                     </a>
@@ -97,7 +64,7 @@
                 <div class="mt-8">
                     <div class="text-xs text-gray-400 px-4 uppercase tracking-wider mb-4">COMPONENTS</div>
                     
-                    <a href="/components/offcanvas.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                    <a href="/components/offcanvas.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full bg-[#313131] ">
                         <i class="fas fa-table-layout"></i>
                         <span>Offcanvas</span>
                     </a>
@@ -105,6 +72,11 @@
                     <a href="/components/modal.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fas fa-window-restore"></i>
                         <span>Modal</span>
+                    </a>
+
+                    <a href="/components/accordion.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Accordion</span>
                     </a>
                 </div>
 

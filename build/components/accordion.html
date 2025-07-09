@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Components - Finli</title>
+
+    <!-- icons and fonts -->
+    <link rel="stylesheet" href="/assets/fonts/fontawesome/all.css">
+
+    <!-- Main stylesheets -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/accordion.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+</head>
+<body class="bg-white">
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden hidden"></div>
+
+    <div class="flex h-screen relative">
+        <!-- Sidebar -->
+        <div id="sidebar" class="w-64 bg-[#1a1a1a] text-white flex flex-col fixed lg:relative z-50 h-full transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+            <!-- Logo -->
+            <div class="p-6 border-b border-gray-700">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold">
+                        Fin<span class="text-blue-500">li</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="flex-1 py-6">
+                <div class="space-y-2">
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
+                    
+                    <a href="/dashboard/dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fa-solid fa-grid-2"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="/dashboard/transactions.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Transaction</span>
+                    </a>
+                    
+                    <a href="/dashboard/wallet.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-wallet"></i>
+                        <span>My Wallet</span>
+                    </a>
+                    
+                    <a href="/dashboard/analytics.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="mt-8">
+                    <div class="text-xs text-gray-400 px-4 uppercase tracking-wider mb-4">COMPONENTS</div>
+                    
+                    <a href="/components/offcanvas.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-table-layout"></i>
+                        <span>Offcanvas</span>
+                    </a>
+                    
+                    <a href="/components/modal.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-window-restore"></i>
+                        <span>Modal</span>
+                    </a>
+
+                    <a href="/components/accordion.html" class="flex items-center space-x-3 px-5 py-3 text-white bg-[#313131] w-full">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Accordion</span>
+                    </a>
+                </div>
+
+                <div class="absolute bottom-0 w-full">                    
+                    <a href="/dashboard/settings.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-cog"></i>
+                        <span>Setting</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-y-auto lg:ml-0 bg-white">
+            <!-- Header -->
+            <header class="px-4 lg:px-6 py-3 sticky">
+                <div class="flex items-center justify-between w-full mx-auto p-3 max-w-[1320px]">
+                    <!-- Mobile menu button and title -->
+                    <div class="flex items-center space-x-4">
+                        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-bars text-gray-600"></i>
+                        </button>
+                        <h1 class="text-xl lg:text-4xl font-bold text-gray-900">Accordion Components</h1>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2 lg:space-x-4">
+                        <!-- Search -->
+                        <div class="relative hidden md:block">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 w-60 lg:w-80 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <!-- Mobile search button -->
+                        <button class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-search text-gray-600"></i>
+                        </button>
+                        
+                        <!-- Notification -->
+                        <div class="relative">
+                            <button class="p-2 rounded-lg hover:bg-gray-100 relative">
+                                <i class="fas fa-bell text-gray-600"></i>
+                                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">1</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Profile -->
+                        <div class="flex items-center space-x-3">
+                            <img src="/assets/images/people/avatar-10.jpg" alt="Profile" class="w-8 h-8 rounded-full">
+                            <i class="fas fa-chevron-down text-gray-400 hidden sm:block"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="mx-auto w-full p-3 lg:p-6 max-w-[1320px]">
+                <!-- Documentation Header -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Accordion Component Documentation</h2>
+                    <p class="text-gray-600">Accordions are interactive components that expand and collapse to reveal or hide content, perfect for FAQs, navigation menus, and content organization.</p>
+                </div>
+
+                <!-- Basic Accordion Section -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Basic Accordion</h3>
+                    
+                    <!-- Demo Example -->
+                    <div class="bg-white border border-gray-200 rounded-xl mb-8">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header">
+                                    <span>What is an Accordion?</span>
+                                    <i class="fas fa-chevron-down transition-transform"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>An accordion is a UI element that can be expanded or collapsed to reveal or hide content. It's commonly used for FAQs, navigation menus, and content organization.</p>
+                                        <p class="mt-2">This implementation provides smooth animations, keyboard accessibility, and customizable styles.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <button class="accordion-header">
+                                    <span>How do I use it?</span>
+                                    <i class="fas fa-chevron-down transition-transform"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>To use the accordion:</p>
+                                        <ol class="list-decimal list-inside mt-2 space-y-1">
+                                            <li>Add the accordion structure to your HTML</li>
+                                            <li>Include the accordion.js script</li>
+                                            <li>Style as needed with the provided CSS classes</li>
+                                        </ol>
+                                        <p class="mt-2">The accordion will automatically initialize itself on page load.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <button class="accordion-header">
+                                    <span>Is it accessible?</span>
+                                    <i class="fas fa-chevron-down transition-transform"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-body">
+                                        <p>Yes! This accordion implementation follows accessibility best practices:</p>
+                                        <ul class="list-disc list-inside mt-2 space-y-1">
+                                            <li>Proper ARIA attributes for screen readers</li>
+                                            <li>Keyboard navigation support</li>
+                                            <li>Focus management</li>
+                                            <li>Semantic HTML structure</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Code Example -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-3">HTML Structure:</h4>
+                        <pre class="bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto"><code class="language-html">&lt;div class="accordion"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;button class="accordion-header"&gt;
+            &lt;span&gt;Accordion Title&lt;/span&gt;
+            &lt;i class="fas fa-chevron-down transition-transform"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;div class="accordion-content"&gt;
+            &lt;div class="accordion-body"&gt;
+                Your content goes here...
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- More accordion items --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Accordion Variants -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Accordion Variants</h3>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <!-- Bordered Accordion -->
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-4">Bordered Accordion</h4>
+                            <div class="accordion accordion-bordered">
+                                <div class="accordion-item">
+                                    <button class="accordion-header">
+                                        <span>Bordered Style</span>
+                                        <i class="fas fa-chevron-down transition-transform"></i>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p>This variant adds borders between each accordion item for better visual separation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header">
+                                        <span>Clean Design</span>
+                                        <i class="fas fa-chevron-down transition-transform"></i>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p>Perfect for FAQ sections and content organization where visual separation is important.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filled Accordion -->
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-4">Filled Accordion</h4>
+                            <div class="accordion accordion-filled">
+                                <div class="accordion-item">
+                                    <button class="accordion-header">
+                                        <span>Filled Style</span>
+                                        <i class="fas fa-chevron-down transition-transform"></i>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p>This variant uses background colors to make the headers stand out.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header">
+                                        <span>High Visibility</span>
+                                        <i class="fas fa-chevron-down transition-transform"></i>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p>Great for navigation menus or when you want to draw attention to the accordion.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Code Example -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-3">Variant Examples:</h4>
+                        <pre class="bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto"><code class="language-html">&lt;!-- Bordered Accordion --&gt;
+&lt;div class="accordion accordion-bordered"&gt;
+    &lt;!-- Accordion items --&gt;
+&lt;/div&gt;
+
+&lt;!-- Filled Accordion --&gt;
+&lt;div class="accordion accordion-filled"&gt;
+    &lt;!-- Accordion items --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Advanced Features -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Advanced Features</h3>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <!-- Multiple Open -->
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-4">Multiple Open Items</h4>
+                            <div class="accordion" data-allow-multiple="true">
+                                <div class="accordion-item">
+                                    <button class="accordion-header">
+                                        <span>Multiple Items</span>
+                                        <i class="fas fa-chevron-down transition-transform"></i>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p>This accordion allows multiple items to be open at the same time.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header">
+                                        <span>Click Both</span>
+                                        <i class="fas fa-chevron-down transition-transform"></i>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p>Try opening this item while the one above is already open!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header">
+                                        <span>Another Item</span>
+                                        <i class="fas fa-chevron-down transition-transform"></i>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p>All three can be open simultaneously.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- With Icons -->
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-4">Accordion with Custom Icons</h4>
+                            <div class="accordion accordion-custom-icon">
+                                <div class="accordion-item">
+                                    <button class="accordion-header">
+                                        <span><i class="fas fa-user text-blue-600 mr-2"></i> User Settings</span>
+                                        <i class="fas fa-plus text-blue-600 accordion-icon-closed"></i>
+                                        <i class="fas fa-minus text-blue-600 accordion-icon-open hidden"></i>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p>This accordion uses custom open/close icons and header icons for better visual cues.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header">
+                                        <span><i class="fas fa-shield-alt text-blue-600 mr-2"></i> Privacy Options</span>
+                                        <i class="fas fa-plus text-blue-600 accordion-icon-closed"></i>
+                                        <i class="fas fa-minus text-blue-600 accordion-icon-open hidden"></i>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p>The plus/minus icons provide clear indication of expandable content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Code Example -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-3">Multiple Open Items:</h4>
+                        <pre class="bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto"><code class="language-html">&lt;!-- Allow multiple items to be open --&gt;
+&lt;div class="accordion" data-allow-multiple="true"&gt;
+    &lt;!-- Accordion items --&gt;
+&lt;/div&gt;</code></pre>
+
+                        <h4 class="font-semibold text-gray-900 mb-3 mt-4">Custom Icons:</h4>
+                        <pre class="bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto"><code class="language-html">&lt;div class="accordion accordion-custom-icon"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;button class="accordion-header"&gt;
+            &lt;span&gt;&lt;i class="fas fa-user text-blue-600 mr-2"&gt;&lt;/i&gt; User Settings&lt;/span&gt;
+            &lt;i class="fas fa-plus text-blue-600 accordion-icon-closed"&gt;&lt;/i&gt;
+            &lt;i class="fas fa-minus text-blue-600 accordion-icon-open hidden"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;div class="accordion-content"&gt;
+            &lt;div class="accordion-body"&gt;
+                Content goes here...
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- API Reference -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">API Reference</h3>
+                    
+                    <!-- CSS Classes Table -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-4">CSS Classes</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse border border-gray-300">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="border border-gray-300 px-4 py-2 text-left">Class</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.accordion</code></td>
+                                        <td class="border border-gray-300 px-4 py-2">Main container for accordion</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.accordion-item</code></td>
+                                        <td class="border border-gray-300 px-4 py-2">Individual accordion item</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.accordion-header</code></td>
+                                        <td class="border border-gray-300 px-4 py-2">Clickable header/toggle button</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.accordion-content</code></td>
+                                        <td class="border border-gray-300 px-4 py-2">Container for collapsible content</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.accordion-body</code></td>
+                                        <td class="border border-gray-300 px-4 py-2">Inner content area with padding</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.accordion-bordered</code></td>
+                                        <td class="border border-gray-300 px-4 py-2">Variant with borders between items</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 px-4 py-2"><code class="bg-gray-100 px-2 py-1 rounded">.accordion-filled</code></td>
+                                        <td class="border border-gray-300 px-4 py-2">Variant with colored headers</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- JavaScript API -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-3">JavaScript API:</h4>
+                        <pre class="bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto"><code class="language-javascript">// Initialize all accordions
+document.addEventListener('DOMContentLoaded', function() {
+    TwAccordion.init();
+});
+
+// Get specific accordion instance
+const accordion = TwAccordion.getInstance('#myAccordion');
+
+// Control accordion programmatically
+accordion.open(0);    // Open first item
+accordion.close(0);   // Close first item
+accordion.toggle(0);  // Toggle first item
+accordion.openAll();  // Open all items (if multiple allowed)
+accordion.closeAll(); // Close all items
+
+// Listen for accordion events
+document.querySelector('#myAccordion').addEventListener('accordion:open', function(e) {
+    console.log('Item opened:', e.detail.index);
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Customization -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Customization</h3>
+                    
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                        <h4 class="font-semibold text-blue-900 mb-4">Styling Tips:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-blue-800">
+                            <li>Customize colors by modifying the accordion CSS variables</li>
+                            <li>Add custom animations by overriding the transition properties</li>
+                            <li>Use the <code class="bg-blue-100 px-2 py-1 rounded">data-allow-multiple</code> attribute to allow multiple open items</li>
+                            <li>Add your own icons or replace the default chevron</li>
+                            <li>Create nested accordions for hierarchical content</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Application main and componentscripts -->
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/components/accordion.js"></script>
+
+    <!-- page demo scripts -->
+    <script>
+        // Initialize syntax highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            hljs.highlightAll();
+            
+            // Add language classes to code blocks if they don't have them
+            document.querySelectorAll('pre code').forEach((block) => {
+                if (!block.classList.contains('language-html') && 
+                    !block.classList.contains('language-javascript')) {
+                    if (block.textContent.includes('<!') || 
+                        block.textContent.includes('<div') || 
+                        block.textContent.includes('<span')) {
+                        block.classList.add('language-html');
+                    } else if (block.textContent.includes('function') || 
+                               block.textContent.includes('const ') || 
+                               block.textContent.includes('document.')) {
+                        block.classList.add('language-javascript');
+                    }
+                }
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+</body>
+</html>
