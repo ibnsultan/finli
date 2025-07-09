@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Finli</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-white">
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden hidden"></div>
+
+    <div class="flex h-screen relative">
+        <!-- Sidebar -->
+        <div id="sidebar" class="w-64 bg-[#1a1a1a] text-white flex flex-col fixed lg:relative z-50 h-full transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+            <!-- Logo -->
+            <div class="p-6 border-b border-gray-700">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold">
+                        Fin<span class="text-blue-500">li</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="flex-1 py-6">
+                <div class="space-y-2">
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
+                    
+                    <a href="dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fa-solid fa-grid-2"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="transactions.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Transaction</span>
+                    </a>
+                    
+                    <a href="wallet.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-wallet"></i>
+                        <span>My Wallet</span>
+                    </a>
+                    
+                    <a href="analytics.html" class="flex items-center space-x-3 px-5 py-3 text-white bg-[#313131] w-full">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="mt-8">
+                    <div class="text-xs text-gray-400 px-4 uppercase tracking-wider mb-4">OTHER</div>
+                    
+                    <a href="#" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-palette"></i>
+                        <span>Theme</span>
+                    </a>
+                    
+                    <a href="#" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security</span>
+                    </a>
+                </div>
+
+                <div class="absolute bottom-0 w-full">                    
+                    <a href="settings.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-cog"></i>
+                        <span>Setting</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-y-auto lg:ml-0 bg-white">
+            <!-- Header -->
+            <header class="px-4 lg:px-6 py-3 sticky">
+                <div class="flex items-center justify-between w-full mx-auto p-3 max-w-[1320px]">
+                    <!-- Mobile menu button and title -->
+                    <div class="flex items-center space-x-4">
+                        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-bars text-gray-600"></i>
+                        </button>
+                        <h1 class="text-xl lg:text-4xl font-bold text-gray-900">Analytics</h1>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2 lg:space-x-4">
+                        <!-- Search -->
+                        <div class="relative hidden md:block">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 w-60 lg:w-80 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <!-- Mobile search button -->
+                        <button class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-search text-gray-600"></i>
+                        </button>
+                        
+                        <!-- Notification -->
+                        <div class="relative">
+                            <button class="p-2 rounded-lg hover:bg-gray-100 relative">
+                                <i class="fas fa-bell text-gray-600"></i>
+                                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">1</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Profile -->
+                        <div class="flex items-center space-x-3">
+                            <img src="/assets/images/people/avatar-10.jpg" alt="Profile" class="w-8 h-8 rounded-full">
+                            <i class="fas fa-chevron-down text-gray-400 hidden sm:block"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="mx-auto w-full p-3 max-w-[1320px]">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Main Content -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <!-- Stats Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Total Balance -->
+                            <div class="bg-blue-600 text-white p-6 rounded-xl">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="p-2">
+                                        <i class="fas fa-wallet text-xl"></i>
+                                    </div>
+                                </div>
+                                <div class="text-sm opacity-75">Total Balance</div>
+                                <div class="text-2xl font-bold">$14,200.00</div>
+                            </div>
+
+                            <!-- Income -->
+                            <div class="bg-white p-6 rounded-xl border border-gray-200 stats-card">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="p-2 bg-gray-100 rounded-lg">
+                                        <i class="fas fa-arrow-down text-xl text-gray-600"></i>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-gray-500">Income</div>
+                                <div class="text-2xl font-bold text-gray-900">$8,342.00</div>
+                            </div>
+
+                            <!-- Expenses -->
+                            <div class="bg-white p-6 rounded-xl border border-gray-200 stats-card">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="p-2 bg-gray-100 rounded-lg">
+                                        <i class="fas fa-arrow-up text-xl text-gray-600"></i>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-gray-500">Expenses</div>
+                                <div class="text-2xl font-bold text-gray-900">$5,243.00</div>
+                            </div>
+
+                            <!-- Savings -->
+                            <div class="bg-white p-6 rounded-xl border border-gray-200 stats-card">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="p-2 bg-gray-100 rounded-lg">
+                                        <i class="fas fa-sync-alt text-xl text-gray-600"></i>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-gray-500">Savings</div>
+                                <div class="text-2xl font-bold text-gray-900">$5,243.00</div>
+                            </div>
+                        </div>
+
+                        <!-- Expense vs Income Chart -->
+                        <div class="bg-white p-6 rounded-xl border border-gray-200">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-semibold">Expense vs Income</h3>
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-sm text-gray-500">This Month</span>
+                                </div>
+                            </div>
+                            <div id="analyticsExpenseIncomeChart" class="h-[300px] md:h-[450px]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Sidebar -->
+                    <div class="space-y-6">
+                        <!-- Spending Chart -->
+                        <div class="bg-white p-6 rounded-xl border border-gray-200">
+                            <h3 class="text-lg font-semibold mb-4">Spending</h3>
+                            <div class="flex items-center justify-center mb-4">
+                                <div id="spendingChart" style="width: 120px; height: 120px;"></div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
+                                        <span class="text-sm">Food & Dining</span>
+                                    </div>
+                                    <span class="text-sm font-semibold">$800.00</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                        <span class="text-sm">Transportation</span>
+                                    </div>
+                                    <span class="text-sm font-semibold">$343.00</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                        <span class="text-sm">Shopping</span>
+                                    </div>
+                                    <span class="text-sm font-semibold">$232.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- My Saving -->
+                        <div class="bg-white p-6 rounded-xl border border-gray-200">
+                            <h3 class="text-lg font-semibold mb-4">My Saving</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-university text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">Mutual funds</div>
+                                            <div class="w-32 bg-gray-200 rounded-full h-1">
+                                                <div class="bg-blue-600 h-1 rounded-full w-3/4"></div>
+                                            </div>
+                                            <div class="text-xs text-gray-500 mt-1">Monthly income 10%</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-semibold">$454.00</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-chart-line text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">Investment</div>
+                                            <div class="w-32 bg-gray-200 rounded-full h-1">
+                                                <div class="bg-green-600 h-1 rounded-full w-1/2"></div>
+                                            </div>
+                                            <div class="text-xs text-gray-500 mt-1">Monthly income 5%</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-semibold">$213.78</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upgrade to PRO -->
+                        <div class="bg-gray-800 text-white p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold mb-2">Upgrade to PRO</h3>
+                            <p class="text-sm text-gray-300 mb-4">Get your pro feature by Subscribe FinPro and easy to manage your financial</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700">
+                                Upgrade
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/plugins/echarts@560/echarts.min.js"></script>
+    <script src="/assets/js/pages/analytics.js"></script>
+</body>
+</html>

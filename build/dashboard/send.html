@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Money - Finli</title>
+
+    <!-- icons and fonts -->
+    <link rel="stylesheet" href="/assets/fonts/fontawesome/all.css">
+
+    <!-- Main stylesheets -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    
+</head>
+<body class="bg-accent font-inter">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">
+                        Fin<span class="text-blue-600">li</span>
+                    </span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Step Progress Indicator -->
+                    <div class="hidden sm:flex items-center space-x-2">
+                        <div class="flex items-center space-x-1">
+                            <div id="step-indicator-1" class="w-2 h-2 bg-gray-900 rounded-full"></div>
+                            <span class="text-xs text-gray-600">Recipient</span>
+                        </div>
+                        <div class="w-8 h-0.5 bg-gray-300"></div>
+                        <div class="flex items-center space-x-1">
+                            <div id="step-indicator-2" class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                            <span class="text-xs text-gray-600">Amount</span>
+                        </div>
+                        <div class="w-8 h-0.5 bg-gray-300"></div>
+                        <div class="flex items-center space-x-1">
+                            <div id="step-indicator-3" class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                            <span class="text-xs text-gray-600">Review</span>
+                        </div>
+                        <div class="w-8 h-0.5 bg-gray-300"></div>
+                        <div class="flex items-center space-x-1">
+                            <div id="step-indicator-4" class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                            <span class="text-xs text-gray-600">Pay</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down text-gray-600 text-xs"></i>
+                    <a href="/dashboard/dashboard.html" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                        <i class="fas fa-times text-gray-600 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="min-h-screen flex items-center justify-center">
+        <div class="max-w-md mx-auto w-full">
+            
+            <!-- Step 1: Select Recipient -->
+            <div id="step-1" class="send-step">
+                <div class="bg-white rounded-3xl shadow-lg p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-2">Who are you sending money to?</h2>
+                        <p class="text-gray-600">Enter an email, phone number, or username.</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="recipient-search" 
+                                placeholder="Search..." 
+                                class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                            >
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8">
+                        <!-- Recipient List -->
+                        <div class="recipient-option selected" data-name="Makenna Siphron" data-phone="953 4224 5563">
+                            <div class="flex items-center justify-between p-4 border-2 border-primary rounded-xl bg-blue-50 cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-gray-300 rounded-full overflow-hidden">
+                                        <img src="../assets/images/people/avatar-2.jpg" alt="Makenna" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Makenna Siphron</div>
+                                        <div class="text-sm text-gray-600">953 4224 5563</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-primary"></i>
+                            </div>
+                        </div>
+
+                        <div class="recipient-option" data-name="Jaxon Lemaire" data-phone="874 3857 2154">
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-gray-300 rounded-full overflow-hidden">
+                                        <img src="../assets/images/people/avatar-3.jpg" alt="Jaxon" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Jaxon Lemaire</div>
+                                        <div class="text-sm text-gray-600">874 3857 2154</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="recipient-option" data-name="Aria Westwood" data-phone="659 7384 1279">
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-gray-300 rounded-full overflow-hidden">
+                                        <img src="../assets/images/people/avatar-4.jpg" alt="Aria" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Aria Westwood</div>
+                                        <div class="text-sm text-gray-600">659 7384 1279</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="recipient-option" data-name="Liam Hargrove" data-phone="238 4958 7890">
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-gray-300 rounded-full overflow-hidden">
+                                        <img src="../assets/images/people/avatar-5.jpg" alt="Liam" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Liam Hargrove</div>
+                                        <div class="text-sm text-gray-600">238 4958 7890</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="recipient-option" data-name="Zoe Kensington" data-phone="487 2356 3981">
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-gray-300 rounded-full overflow-hidden">
+                                        <img src="../assets/images/people/avatar-6.jpg" alt="Zoe" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Zoe Kensington</div>
+                                        <div class="text-sm text-gray-600">487 2356 3981</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="continue-step-1" class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-4 px-6 rounded-2xl transition-colors">
+                        Continue
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Enter Amount -->
+            <div id="step-2" class="send-step hidden">
+                <div class="bg-white rounded-3xl shadow-lg p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-2">Enter Amount</h2>
+                        <p class="text-gray-600">Fast, easy, and secure transactions—whether it's for friends, family, or business.</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">You Send</label>
+                        <div class="relative">
+                            <input type="text" id="amount-input" value="1000" class="w-full text-4xl font-bold text-gray-900 bg-transparent border-none outline-none text-left">
+                            <div class="absolute right-0 top-0 flex items-center space-x-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzAwNTJGRiIvPgo8cGF0aCBkPSJNMTIgNlY5TTEyIDlWMTJNMTIgOUg5TTEyIDlIMTVNMTIgMTVWMThNMTIgMTVIOVMxMiAxNUgxNU0xMiAxNUwxNSAxOE05IDE4SDE1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=" alt="USD" class="w-6 h-6 rounded">
+                                <span class="font-semibold text-gray-900">USD</span>
+                                <i class="fas fa-chevron-down text-gray-600 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-minus mr-3"></i>
+                                <span>Fees (Currency conversion fee)</span>
+                            </div>
+                            <span class="text-gray-900">$5.32</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-minus mr-3"></i>
+                                <span>Total amount</span>
+                            </div>
+                            <span class="text-gray-900">$1000</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-gray-600">
+                                <i class="fas fa-clock mr-3"></i>
+                                <span>Should arrive in</span>
+                            </div>
+                            <span class="text-gray-900">4 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Recipient Get</label>
+                        <div class="relative">
+                            <input type="text" id="recipient-amount" value="994.68" class="w-full text-4xl font-bold text-gray-900 bg-transparent border-none outline-none text-left">
+                            <div class="absolute right-0 top-0 flex items-center space-x-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNCIgZmlsbD0iIzAwNTJGRiIvPgo8cGF0aCBkPSJNMTIgNlY5TTEyIDlWMTJNMTIgOUg5TTEyIDlIMTVNMTIgMTVWMThNMTIgMTVIOVMxMiAxNUgxNU0xMiAxNUwxNSAxOE05IDE4SDE1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=" alt="EUR" class="w-6 h-6 rounded">
+                                <span class="font-semibold text-gray-900">EUR</span>
+                                <i class="fas fa-chevron-down text-gray-600 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="continue-step-2" class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-4 px-6 rounded-2xl transition-colors">
+                        Continue
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Review Payment -->
+            <div id="step-3" class="send-step hidden">
+                <div class="bg-white rounded-3xl shadow-lg p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-2">Review Payment</h2>
+                        <p class="text-gray-600">Everything looks good? Proceed to confirmation.</p>
+                    </div>
+
+                    <div class="space-y-6 mb-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Recipient's Name</span>
+                            <span class="font-semibold text-gray-900" id="review-recipient">Makenna Siphron</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Amount to Send</span>
+                            <span class="font-semibold text-gray-900">$1000</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Fees (Currency conversion fee)</span>
+                            <span class="font-semibold text-gray-900">- $5.32</span>
+                        </div>
+                        
+                        <hr class="border-gray-200">
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Total Deducted</span>
+                            <span class="font-bold text-xl text-gray-900">994.68</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Delivery Time</span>
+                            <span class="font-semibold text-gray-900">Instant</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center text-gray-600 text-sm mb-8">
+                        Should arrive in <span class="font-semibold">4 hours</span>
+                    </div>
+
+                    <button id="continue-step-3" class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-4 px-6 rounded-2xl transition-colors">
+                        Continue
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Verify Transaction -->
+            <div id="step-4" class="send-step hidden">
+                <div class="bg-white rounded-3xl shadow-lg p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-2">Verify Your Transaction</h2>
+                        <p class="text-gray-600">For your security, please enter the 6-digit verification code sent to your registered device.</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-4 mb-8">
+                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                    </div>
+
+                    <div class="text-center mb-8">
+                        <p class="text-gray-600">Didn't receive a code? <button class="text-primary hover:underline">Resend Code</button></p>
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <button id="back-step-4" class="flex-1 border border-gray-300 text-gray-700 font-semibold py-4 px-6 rounded-2xl hover:bg-gray-50 transition-colors">
+                            Back
+                        </button>
+                        <button id="confirm-payment" class="flex-1 bg-primary hover:bg-primary-hover text-white font-semibold py-4 px-6 rounded-2xl transition-colors">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Processing -->
+            <div id="step-5" class="send-step hidden">
+                <div class="bg-white rounded-3xl shadow-lg p-8">
+                    <div class="text-center">
+                        <div class="w-24 h-24 mx-auto mb-8">
+                            <div class="loader w-24 h-24 border-4 border-gray-200 border-t-gray-800 rounded-full animate-spin"></div>
+                        </div>
+                        
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Processing your transaction...</h2>
+                        <p class="text-gray-600">This may take a few seconds. Please don't close this window.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Success -->
+            <div id="step-6" class="send-step hidden">
+                <div class="bg-white rounded-3xl shadow-lg p-8">
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 bg-green-500 rounded-full mx-auto mb-8 flex items-center justify-center">
+                            <i class="fas fa-check text-white text-3xl"></i>
+                        </div>
+                        
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Payment Sent Successfully!</h2>
+                        <p class="text-gray-600 mb-8">Your transaction is complete. Here are your details:</p>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Amount sent</span>
+                            <span class="font-semibold text-gray-900">$1000</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Recipient</span>
+                            <span class="font-semibold text-gray-900" id="success-recipient">Makenna Siphron</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Transaction ID</span>
+                            <span class="font-semibold text-gray-900">TX123456789</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Exchange rate USD</span>
+                            <span class="font-semibold text-gray-900">1 USD = 0.92 EUR</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Payment Method</span>
+                            <span class="font-semibold text-gray-900">Wallet Balance</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Delivery Time</span>
+                            <span class="font-semibold text-gray-900">Instant</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Status</span>
+                            <span class="font-semibold text-green-600">Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-8">
+                        <p class="text-gray-600">Want a receipt? <button class="text-primary hover:underline font-semibold">Download Receipt</button></p>
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <button id="send-another" class="flex-1 border border-gray-300 text-gray-700 font-semibold py-4 px-6 rounded-2xl hover:bg-gray-50 transition-colors">
+                            Send Another
+                        </button>
+                        <button id="back-to-dashboard" class="flex-1 bg-primary hover:bg-primary-hover text-white font-semibold py-4 px-6 rounded-2xl transition-colors">
+                            Dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Send flow state management
+        let currentStep = 1;
+        let selectedRecipient = { name: 'Makenna Siphron', phone: '953 4224 5563' };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            showStep(1);
+            initializeEventListeners();
+        });
+
+        function initializeEventListeners() {
+            // Recipient selection
+            document.querySelectorAll('.recipient-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    document.querySelectorAll('.recipient-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                        const div = opt.querySelector('div');
+                        div.classList.remove('border-primary', 'bg-blue-50');
+                        div.classList.add('border-gray-200');
+                        const chevron = opt.querySelector('i.fa-chevron-right');
+                        chevron.classList.remove('text-primary');
+                        chevron.classList.add('text-gray-400');
+                    });
+
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    const div = this.querySelector('div');
+                    div.classList.remove('border-gray-200');
+                    div.classList.add('border-primary', 'bg-blue-50');
+                    const chevron = this.querySelector('i.fa-chevron-right');
+                    chevron.classList.remove('text-gray-400');
+                    chevron.classList.add('text-primary');
+
+                    selectedRecipient = {
+                        name: this.dataset.name,
+                        phone: this.dataset.phone
+                    };
+                });
+            });
+
+            // Verification code inputs
+            const codeInputs = document.querySelectorAll('#step-4 input');
+            codeInputs.forEach((input, index) => {
+                input.addEventListener('input', function(e) {
+                    if (e.target.value.length === 1 && index < codeInputs.length - 1) {
+                        codeInputs[index + 1].focus();
+                    }
+                });
+                
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
+                        codeInputs[index - 1].focus();
+                    }
+                });
+            });
+
+            // Step navigation
+            document.getElementById('continue-step-1').addEventListener('click', () => {
+                updateStepIndicator(2);
+                goToStep(2);
+            });
+            document.getElementById('continue-step-2').addEventListener('click', () => {
+                updateStepIndicator(3);
+                goToStep(3);
+            });
+            document.getElementById('continue-step-3').addEventListener('click', () => {
+                updateStepIndicator(4);
+                goToStep(4);
+            });
+            document.getElementById('back-step-4').addEventListener('click', () => {
+                updateStepIndicator(3);
+                goToStep(3);
+            });
+            document.getElementById('confirm-payment').addEventListener('click', () => {
+                goToStep(5);
+                // Simulate processing time
+                setTimeout(() => {
+                    updateRecipientNames();
+                    goToStep(6);
+                }, 3000);
+            });
+            document.getElementById('send-another').addEventListener('click', () => {
+                resetFlow();
+            });
+            document.getElementById('back-to-dashboard').addEventListener('click', () => {
+                window.location.href = 'dashboard.html';
+            });
+        }
+
+        function updateStepIndicator(activeStep) {
+            for (let i = 1; i <= 4; i++) {
+                const indicator = document.getElementById(`step-indicator-${i}`);
+                if (i <= activeStep) {
+                    indicator.classList.remove('bg-gray-300');
+                    indicator.classList.add('bg-gray-900');
+                } else {
+                    indicator.classList.remove('bg-gray-900');
+                    indicator.classList.add('bg-gray-300');
+                }
+            }
+        }
+
+        function updateRecipientNames() {
+            document.getElementById('review-recipient').textContent = selectedRecipient.name;
+            document.getElementById('success-recipient').textContent = selectedRecipient.name;
+        }
+
+        function showStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.send-step').forEach(stepElement => {
+                stepElement.classList.add('hidden');
+            });
+
+            // Show current step
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+            currentStep = step;
+        }
+
+        function goToStep(step) {
+            showStep(step);
+        }
+
+        function resetFlow() {
+            currentStep = 1;
+            selectedRecipient = { name: 'Makenna Siphron', phone: '953 4224 5563' };
+            updateStepIndicator(1);
+            showStep(1);
+        }
+
+        // Amount input formatting
+        document.getElementById('amount-input').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/[^\d.]/g, '');
+            e.target.value = value;
+            
+            // Update recipient amount based on conversion rate
+            const amount = parseFloat(value) || 0;
+            const convertedAmount = (amount * 0.92 - 5.32).toFixed(2);
+            document.getElementById('recipient-amount').value = convertedAmount;
+        });
+
+        // Search functionality
+        document.getElementById('recipient-search').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const recipients = document.querySelectorAll('.recipient-option');
+            
+            recipients.forEach(recipient => {
+                const name = recipient.dataset.name.toLowerCase();
+                const phone = recipient.dataset.phone;
+                
+                if (name.includes(searchTerm) || phone.includes(searchTerm)) {
+                    recipient.style.display = 'block';
+                } else {
+                    recipient.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
