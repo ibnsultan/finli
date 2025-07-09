@@ -176,37 +176,8 @@ Update the CSS variables in `styles.css`:
 }
 ```
 
-### Charts
-Modify chart data and styling in `script.js` within the respective chart initialization functions.
-
-### Content
-Update text content, amounts, and user data directly in `index.html`.
-
-## Performance Optimizations
-
-- Optimized images and icons
-- Efficient CSS with Tailwind utilities
-- Minimal JavaScript footprint
-- Lazy loading for charts
-- Smooth animations and transitions
-
-## Future Enhancements
-
-- Dark mode support
-- Real API integration
-- Advanced filtering and search
-- Export functionality
-- More chart types and data visualizations
-- User authentication
-- Multi-currency support
-
-## License
-
-This project is for educational and demonstration purposes. Feel free to use and modify as needed.
-
 ## Credits
 
-- Design inspiration from modern fintech applications
 - Icons by Font Awesome
 - Charts powered by Chart.js
 - Styling with Tailwind CSS
