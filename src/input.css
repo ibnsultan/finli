@@ -1,4 +1,210 @@
 @import "tailwindcss";
+@layer components {
+  
+    /* Modal Component Styles */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1050;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .modal.hidden {
+        display: none;
+    }
+
+    .modal.modal-show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal-dialog {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        max-height: 90vh;
+        margin: 1.75rem auto;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        transform: translateY(-25px);
+        transition: transform 0.3s ease-out;
+        overflow: hidden;
+    }
+
+    .modal-show .modal-dialog {
+        transform: translateY(0);
+    }
+
+    .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .modal-close {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #4b5563;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: opacity 0.15s;
+    }
+
+    .modal-close:hover {
+        opacity: 1;
+    }
+
+    .modal-body {
+        position: relative;
+        flex: 1 1 auto;
+        padding: 1.5rem;
+        overflow-y: auto;
+    }
+
+    .modal-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0.75rem 1.5rem 1.5rem;
+        border-top: 0;
+        gap: 0.5rem;
+    }
+
+    /* Modal sizes */
+    .modal-sm {
+        max-width: 450px;
+    }
+
+    .modal-lg {
+        max-width: 800px;
+    }
+
+    /* Body scroll lock when modal is open */
+    body.modal-open {
+        overflow: hidden;
+    }
+
+  /* Dropdown */
+
+  .dropdown {
+    @apply relative inline-block;
+  }
+
+  .dropdown-menu {
+    @apply absolute z-[1000] mt-2 hidden w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5;
+  }
+
+  .dropdown-menu.show {
+    @apply block;
+    animation: dropdownIn 0.2s ease-out forwards;
+  }
+
+  .dropdown-item {
+    @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer;
+  }
+
+  /* Accordion Component Styles */
+  .accordion {
+    @apply w-full rounded-lg border border-gray-200 bg-white;
+  }
+
+  .accordion-item {
+    @apply border-b border-gray-200 last:border-b-0;
+  }
+
+  .accordion-header {
+    @apply flex w-full cursor-pointer items-center justify-between px-5 py-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset;
+  }
+
+  .accordion-header[aria-expanded="true"] .fa-chevron-down {
+    @apply rotate-180;
+  }
+
+  .accordion-content {
+    @apply max-h-0 overflow-hidden transition-all duration-300 ease-in-out;
+  }
+
+  .accordion-body {
+    @apply px-5 py-4 text-gray-600;
+  }
+
+  /* Accordion variants */
+  .accordion-bordered .accordion-item {
+    @apply border-b border-gray-300;
+  }
+
+  .accordion-filled .accordion-header {
+    @apply bg-gray-100;
+  }
+
+  .accordion-filled .accordion-header[aria-expanded="true"] {
+    @apply bg-blue-50 text-blue-700;
+  }
+
+  .accordion-filled .accordion-header:hover {
+    @apply bg-gray-200;
+  }
+
+  /* Custom icon variant */
+  .accordion-custom-icon .accordion-icon-open {
+    @apply hidden;
+  }
+
+  .accordion-custom-icon .accordion-header[aria-expanded="true"] .accordion-icon-closed {
+    @apply hidden;
+  }
+
+  .accordion-custom-icon .accordion-header[aria-expanded="true"] .accordion-icon-open {
+    @apply block;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Additional dropdown styling for mobile/fixed positioning */
+@media (max-width: 767px) {
+  .dropdown-menu.fixed {
+    position: fixed;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+}
 
 :root {
     --primary: #355FE5;
@@ -57,7 +263,6 @@ html, body{
 .offcanvas-show.offcanvas-top      { @apply translate-y-0; }
 .offcanvas-show.offcanvas-bottom   { @apply translate-y-0; }
 
-
 .bg-primary {
   background: var(--primary);
 }
@@ -76,4 +281,35 @@ html, body{
 
 .btn-dismiss {
     @apply text-gray-500 hover:text-black text-xl absolute top-4 right-4;
+}
+
+.btn{
+    @apply px-4 py-2 rounded;
+}
+
+.btn-primary {
+    @apply text-white;
+    background-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    @apply text-white;
+    background-color: var(--secondary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary);
+}
+
+.btn-accent {
+    @apply text-black;
+    background-color: var(--accent);
+}
+
+.btn-accent:hover {
+    background-color: var(--accent);
 }
