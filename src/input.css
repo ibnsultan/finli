@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+    --primary: #355FE5;
+    --secondary: #1a1a1a;
+    --accent: #EDF2F7;
+    --primary-hover: #2d4fd8;
+}
+
+html, body{
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent);
+}
+
+/* Core Offcanvas Placement */
+.offcanvas {
+    @apply fixed z-100 bg-white shadow-lg transition-transform duration-300;
+}
+
+.offcanvas-header{
+    @apply p-4 border-b border-gray-200 font-semibold text-lg relative;
+}
+
+.offcanvas-body {
+    @apply p-4;
+}
+
+.offcanvas-left    { @apply top-0 left-0 -translate-x-full h-full w-80; }
+.offcanvas-right   { @apply top-0 right-0 translate-x-full h-full w-80; }
+.offcanvas-top     { @apply left-0 top-0 w-full h-auto -translate-y-full; }
+.offcanvas-bottom  { @apply left-0 bottom-0 w-full h-auto translate-y-full; }
+
+/* Float version adds a gap */
+.offcanvas-float.offcanvas-left    { @apply left-4 -translate-x-full; }
+.offcanvas-float.offcanvas-right   { @apply right-4 translate-x-full; }
+.offcanvas-float.offcanvas-top     { @apply top-4 -translate-y-full; }
+.offcanvas-float.offcanvas-bottom  { @apply bottom-4 translate-y-full; }
+
+.offcanvas-float.offcanvas-left,
+.offcanvas-float.offcanvas-right
+{
+    @apply mt-4 border border-gray-300 rounded-lg;
+    height: calc(100vh - 2rem);
+}
+
+.offcanvas-float.offcanvas-top,
+.offcanvas-float.offcanvas-bottom
+{
+    @apply border border-gray-300 rounded-lg ml-[1vw];
+    width: 98vw;
+}
+    
+
+/* Show State */
+.offcanvas-show.offcanvas-left     { @apply translate-x-0; }
+.offcanvas-show.offcanvas-right    { @apply translate-x-0; }
+.offcanvas-show.offcanvas-top      { @apply translate-y-0; }
+.offcanvas-show.offcanvas-bottom   { @apply translate-y-0; }
+
+
+.bg-primary {
+  background: var(--primary);
+}
+
+.bg-secondary {
+  background: var(--secondary);
+}
+
+.bg-accent {
+  background: var(--accent);
+}
+
+.from-primary {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-hover) 100%);
+}
+
+.btn-dismiss {
+    @apply text-gray-500 hover:text-black text-xl absolute top-4 right-4;
+}
