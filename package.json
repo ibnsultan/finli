@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.11",
+    "express": "^4.18.2"
+  },
+  "name": "finli",
+  "version": "1.0.0",
+  "description": "Modern financial dashboard",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./build/assets/css/main.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./build/assets/css/main.css",
+    "start": "npm run build && npm run dev",
+    "serve": "node server.js",
+    "dev-server": "npm run build && node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
