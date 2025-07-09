@@ -1,0 +1,724 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap);
+
+/* Color variables */
+:root {
+    --primary: #355FE5;
+    --secondary: #1a1a1a;
+    --accent: #EDF2F7;
+    --primary-hover: #2d4fd8;
+}
+
+html, body{
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent);
+}
+
+/* Hide all page views by default */
+.page-view {
+    display: none;
+}
+
+.page-view:not(.hidden) {
+    display: block;
+}
+
+/* Custom chart container */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+/* Credit card styling */
+.credit-card {
+    aspect-ratio: 1.585;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(53, 95, 229, 0.2), 0 0 30px rgba(53, 95, 229, 0.1);
+}
+
+.credit-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(53, 95, 229, 0.15) 0%, rgba(53, 95, 229, 0.05) 50%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+#balanceChart {
+    height: 300px !important;
+    max-height: 300px !important;
+}
+
+#analyticsBalanceChart {
+    height: 300px !important;
+    max-height: 300px !important;
+}
+
+#moneyFlowChart {
+    height: 200px !important;
+    max-height: 200px !important;
+}
+
+#incomeChart {
+    height: 300px !important;
+    max-height: 300px !important;
+}
+
+#spendingChart {
+    height: 120px !important;
+    width: 120px !important;
+    max-height: 120px !important;
+    max-width: 120px !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* Smooth transitions */
+* {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Card hover effects */
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation active state */
+.nav-active {
+    background-color: var(--primary) !important;
+    color: white !important;
+}
+
+/* Custom button styles */
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #2d4fd8;
+    transform: translateY(-1px);
+}
+
+/* Custom card styles */
+.financial-card {
+    background: linear-gradient(135deg, var(--primary) 0%, #4f7df8 100%);
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.financial-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Stats card animations */
+.stats-card {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: var(--primary);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: bottom left;
+    border-radius: 0.75rem;
+    z-index: -1;
+}
+
+.stats-card:hover::before {
+    width: 100%;
+    height: 100%;
+    transform: rotate(0deg);
+}
+
+.stats-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(53, 95, 229, 0.3);
+    color: white;
+}
+
+.stats-card:hover .text-gray-500 {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.stats-card:hover .text-gray-900 {
+    color: white !important;
+}
+
+.stats-card:hover .text-gray-600 {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.stats-card:hover i {
+    color: white !important;
+}
+
+/* Action button animations - similar to stats cards */
+.action-button {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: var(--primary);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: bottom left;
+    border-radius: 0.5rem;
+    z-index: -1;
+}
+
+.action-button:hover::before {
+    width: 100%;
+    height: 100%;
+    transform: rotate(0deg);
+}
+
+.action-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(53, 95, 229, 0.3);
+    color: white;
+}
+
+.action-button:hover .text-gray-600 {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.action-button:hover i {
+    color: white !important;
+}
+
+/* Responsive Design for 1200px breakpoint */
+@media (max-width: 1199px) {
+    /* Force single column layout for dashboard */
+    .grid.xl\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Adjust chart containers for smaller screens */
+    .chart-container {
+        min-height: 280px;
+    }
+    
+    /* Ensure stats grid adapts properly */
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    
+    /* Credit card adjustments */
+    .credit-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    /* Quick actions adjustments */
+    .quick-actions {
+        margin-top: 1.5rem;
+    }
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .chart-container {
+        height: 250px;
+        min-height: 250px;
+    }
+    
+    .credit-card {
+        max-width: 100%;
+    }
+    
+    /* Adjust padding for mobile */
+    .p-6 {
+        padding: 1rem !important;
+    }
+    
+    .space-y-6 > * + * {
+        margin-top: 1rem !important;
+    }
+
+    /* Mobile table improvements */
+    table {
+        font-size: 0.875rem;
+    }
+    
+    th, td {
+        padding: 0.5rem !important;
+    }
+    
+    /* Sidebar adjustments for mobile */
+    .sidebar {
+        width: 280px;
+    }
+    
+    /* Header improvements */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        backdrop-filter: blur(8px);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Tablet responsive adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Adjust grid layouts for tablets */
+    .grid.xl\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .grid.xl\\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Improve table scrolling on tablets */
+    .overflow-x-auto {
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e0 #f7fafc;
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar-track {
+        background: #f7fafc;
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar-thumb {
+        background-color: #cbd5e0;
+        border-radius: 3px;
+    }
+}
+
+/* Mobile-first sidebar improvements */
+@media (max-width: 1023px) {
+    /* Ensure sidebar is properly positioned */
+    #sidebar {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    /* Mobile menu overlay */
+    #mobile-menu-overlay {
+        backdrop-filter: blur(2px);
+    }
+    
+    /* Adjust main content when sidebar is hidden */
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Ensure sidebar navigation items are left-aligned */
+    #sidebar {
+        text-align: left !important;
+    }
+    
+    #sidebar nav {
+        text-align: left !important;
+    }
+    
+    #sidebar nav a {
+        justify-content: flex-start !important;
+        text-align: left !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    #sidebar nav .space-y-2 {
+        align-items: flex-start !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    #sidebar .text-xs {
+        text-align: left !important;
+    }
+    
+    /* Ensure logo section is also left-aligned */
+    #sidebar .p-6 {
+        text-align: left !important;
+    }
+    
+    #sidebar .flex.items-center {
+        justify-content: flex-start !important;
+    }
+    
+    /* Override any potential centering */
+    #sidebar * {
+        text-align: left !important;
+    }
+    
+    #sidebar nav a span {
+        text-align: left !important;
+    }
+}
+
+/* Additional mobile sidebar fixes */
+@media (max-width: 1023px) {
+    /* Force all sidebar content to be left-aligned */
+    #sidebar,
+    #sidebar *,
+    #sidebar nav,
+    #sidebar nav *,
+    #sidebar .space-y-2,
+    #sidebar .space-y-2 * {
+        text-align: left !important;
+        justify-content: flex-start !important;
+    }
+    
+    /* Ensure flex containers maintain proper alignment */
+    #sidebar .flex {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+    }
+    
+    /* Navigation links specific alignment */
+    #sidebar nav a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+        flex-direction: row !important;
+    }
+    
+    /* Icon and text alignment */
+    #sidebar nav a i {
+        margin-right: 0.75rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    #sidebar nav a span {
+        text-align: left !important;
+        flex: 1 !important;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+    /* Larger touch targets */
+    button, 
+    a {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Better form inputs */
+    input, 
+    select, 
+    textarea {
+        min-height: 44px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Improved spacing */
+    .space-x-2 > * + * {
+        margin-left: 0.75rem;
+    }
+    
+    .space-x-3 > * + * {
+        margin-left: 1rem;
+    }
+    
+    .space-x-4 > * + * {
+        margin-left: 1.25rem;
+    }
+}
+
+/* Additional responsive utilities */
+@media (max-width: 640px) {
+    /* Stack elements vertically on very small screens */
+    .sm\\:flex-row {
+        flex-direction: column !important;
+    }
+    
+    .sm\\:space-x-4 > * + * {
+        margin-left: 0 !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    /* Adjust text sizes */
+    .text-2xl {
+        font-size: 1.5rem !important;
+    }
+    
+    .text-3xl {
+        font-size: 1.875rem !important;
+    }
+    
+    /* Better credit card display */
+    .credit-card {
+        padding: 1rem !important;
+    }
+    
+    .credit-card .text-2xl {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* Chart responsive styles */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 250px;
+    }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 1024px) {
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+    
+    .sidebar.open {
+        left: 0;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Custom table styles */
+.custom-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.custom-table th {
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.custom-table td {
+    padding: 16px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+/* Progress bar styles */
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* Notification badge */
+.notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: #ef4444;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* Status indicators */
+.status-success {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Theme toggle */
+.theme-toggle {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #d1d5db;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle.active {
+    background-color: var(--primary);
+}
+
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle.active::before {
+    transform: translateX(30px);
+}
+
+/* Utility classes */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary), #4f7df8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-custom {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-custom-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Focus states */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(53, 95, 229, 0.1);
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.animate-slideInLeft {
+    animation: slideInLeft 0.3s ease-out;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #1f2937;
+        --bg-secondary: #111827;
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+    }
+}
