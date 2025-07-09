@@ -107,7 +107,7 @@
   }
 
   .dropdown-menu {
-    @apply absolute z-[1000] mt-2 hidden w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5;
+    @apply absolute z-[1000] mt-2 hidden w-48 rounded-md bg-white shadow-lg ring-1 ring-gray-200;
   }
 
   .dropdown-menu.show {
@@ -173,6 +173,37 @@
   .accordion-custom-icon .accordion-header[aria-expanded="true"] .accordion-icon-open {
     @apply block;
   }
+}
+
+
+
+/* Modal animations */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal.animate-fade .modal-dialog {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal.animate-slide .modal-dialog {
+    animation: modalSlideIn 0.3s ease-out;
 }
 
 @keyframes fadeIn {
