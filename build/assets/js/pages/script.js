@@ -499,19 +499,10 @@ function resizeAllCharts() {
     });
 }
 
-// Initialize other components
+// This function has been moved to line ~690
+// Keeping a reference here for backward compatibility
 function initComponents() {
-    // Quick Transfer functionality
-    initQuickTransfer();
-    
-    // Search functionality
-    initSearch();
-    
-    // Theme toggle (if implemented)
-    initThemeToggle();
-    
-    // Form interactions
-    initFormInteractions();
+    console.warn('Duplicate initComponents function called - using the main implementation');
 }
 
 function initQuickTransfer() {
@@ -698,6 +689,29 @@ function initComponents() {
     
     // Form interactions
     initFormInteractions();
+    
+    // Initialize dropdown components
+    initDropdowns();
+}
+
+// Initialize dropdown components
+function initDropdowns() {
+    // Notification dropdown toggle
+    const notificationToggle = document.querySelector('[data-tw-target="#notificationDropdown"]');
+    const notificationMenu = document.querySelector('#notificationDropdown');
+    
+    // Profile dropdown toggle
+    const profileToggle = document.querySelector('[data-tw-target="#profileDropdown"]');
+    const profileMenu = document.querySelector('#profileDropdown');
+    
+    // Initialize dropdowns if elements exist
+    if (notificationToggle && notificationMenu) {
+        new Dropdown(notificationToggle, notificationMenu);
+    }
+    
+    if (profileToggle && profileMenu) {
+        new Dropdown(profileToggle, profileMenu);
+    }
 }
 
 function initQuickTransfer() {
