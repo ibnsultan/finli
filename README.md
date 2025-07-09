@@ -16,7 +16,7 @@ A modern, responsive financial dashboard built with HTML, CSS (Tailwind), and va
 - HTML5
 - CSS3 with Tailwind CSS
 - Vanilla JavaScript
-- Chart.js for data visualization
+- ECharts for data visualization
 - Font Awesome for icons
 
 ## Color Palette
@@ -28,25 +28,58 @@ A modern, responsive financial dashboard built with HTML, CSS (Tailwind), and va
 ## File Structure
 
 ```
-Finli/
-├── index.html          # Main HTML file
-├── styles.css          # Custom CSS styles
-├── script.js           # JavaScript functionality
+finli/
+├── package.json        # Project dependencies and scripts
+├── server.js           # Express web server
+├── tailwind.config.js  # Tailwind CSS configuration
 ├── README.md           # This file
-└── inspiration/        # Reference design images
-    ├── Screenshot 2025-07-08 024427.png
-    ├── Screenshot 2025-07-08 024449.png
-    ├── Screenshot 2025-07-08 024504.png
-    └── Screenshot 2025-07-08 024603.png
+├── src/
+│   ├── input.css       # Source Tailwind CSS file
+│   └── main.js         # Main JavaScript entry point
+└── build/              # Built/compiled files (served by web server)
+    ├── index.html      # Landing page
+    ├── assets/
+    │   ├── css/
+    │   │   ├── main.css     # Compiled Tailwind CSS
+    │   │   ├── styles.css   # Custom CSS styles
+    │   │   └── landing.css  # Landing page styles
+    │   ├── js/
+    │   │   ├── script.js    # Main JavaScript functionality
+    │   │   ├── landing.js   # Landing page scripts
+    │   │   └── pages/       # Page-specific scripts
+    │   │       ├── dashboard.js
+    │   │       ├── analytics.js
+    │   │       ├── wallet.js
+    │   │       ├── transactions.js
+    │   │       └── settings.js
+    │   └── images/
+    │       ├── people/      # Avatar images
+    │       └── vectors/     # Vector graphics
+    ├── auth/               # Authentication pages
+    │   ├── login.html
+    │   ├── register.html
+    │   └── forgot-password.html
+    └── dashboard/          # Dashboard pages
+        ├── dashboard.html
+        ├── analytics.html
+        ├── wallet.html
+        ├── transactions.html
+        ├── settings.html
+        ├── send.html
+        └── deposit.html
 ```
 
 ## Installation & Usage
 
-1. **Clone or download** the project files
-2. **Open** `index.html` in any modern web browser
-3. **Navigate** between different sections using the sidebar menu
+**Note**: This project now uses a build process with compiled Tailwind CSS and includes a web server for optimal development experience.
 
-No build process or dependencies are required - just open and run!
+1. **Clone or download** the project files
+2. **Install dependencies**: `npm install`
+3. **Build the CSS**: `npm run build`
+4. **Start the web server**: `npm run serve`
+5. **Open your browser** and navigate to `http://localhost:3000`
+
+For development with CSS watching: `npm run dev-server`
 
 ## Getting Started
 
