@@ -21,7 +21,7 @@
         <!-- Sidebar -->
         <div id="sidebar" class="w-64 bg-[#1a1a1a] text-white flex flex-col fixed lg:relative z-50 h-full transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
             <!-- Logo -->
-            <div class="p-6 border-b border-gray-700">
+            <div class="p-6">
                 <div class="flex items-center space-x-3">
                     <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                         <i class="fas fa-chart-line text-white text-sm"></i>
@@ -35,7 +35,7 @@
             <!-- Navigation Menu -->
             <nav class="flex-1 py-6 overflow-y-auto">
                 <div class="space-y-2">
-                    <div class="text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
+                    <div class="hidden text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
                     
                     <a href="/dashboard/dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white bg-[#313131] w-full">
                         <i class="fa-solid fa-grid-2"></i>
@@ -56,6 +56,26 @@
                         <i class="fas fa-chart-pie"></i>
                         <span>Analytics</span>
                     </a>
+                </div>
+
+                <div class="mt-8">
+                    <div class="text-xs text-gray-400 px-4 uppercase tracking-wider mb-4">OTHER PAGES</div>
+                    
+                    <a href="/index.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-table"></i>
+                        <span>Landing</span>
+                    </a>
+
+                    <a href="/auth/login.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </a>
+
+                    <a href="/auth/register.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Register</span>
+                    </a>
+
                 </div>
 
                 <div class="mt-8">
@@ -261,79 +281,10 @@
                             <div id="expenseIncomeChart" class="h-[250px] lg:h-[300px] xl:h-[450px]"></div>
                         </div>
 
-                        <!-- Recent Transactions -->
-                        <div class="bg-white p-4 lg:p-6 rounded-xl border border-gray-200">
-                            <div class="flex items-center justify-between mb-4 lg:mb-6">
-                                <h3 class="text-base lg:text-lg font-semibold">Recent Transaction</h3>
-                                <a href="/dashboard/transactions.html" class="text-blue-600 text-sm hover:underline">See All</a>
-                            </div>
-                            
-                            <div class="overflow-x-auto">
-                                <table class="w-full min-w-[500px]">
-                                    <thead>
-                                        <tr class="text-left text-gray-500 text-xs lg:text-sm">
-                                            <th class="pb-4 min-w-[120px]">Name</th>
-                                            <th class="pb-4 min-w-[80px]">Type</th>
-                                            <th class="pb-4 min-w-[80px]">Date</th>
-                                            <th class="pb-4 min-w-[80px]">Amount</th>
-                                            <th class="pb-4 min-w-[80px]">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="space-y-4">
-                                        <tr class="border-t border-gray-100">
-                                            <td class="py-4">
-                                                <div class="flex items-center space-x-3">
-                                                    <div class="w-6 h-6 lg:w-8 lg:h-8 bg-pink-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                        <i class="fab fa-figma text-pink-600 text-xs lg:text-sm"></i>
-                                                    </div>
-                                                    <span class="font-medium text-sm lg:text-base">Figma</span>
-                                                </div>
-                                            </td>
-                                            <td class="py-4 text-gray-500 text-sm">Subscription</td>
-                                            <td class="py-4 text-gray-500 text-sm">Apr 11, 2022</td>
-                                            <td class="py-4 font-semibold text-sm lg:text-base">$640.00</td>
-                                            <td class="py-4">
-                                                <span class="px-2 lg:px-3 py-1 bg-green-100 text-green-800 text-xs lg:text-sm rounded-full">Success</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="border-t border-gray-100">
-                                            <td class="py-4">
-                                                <div class="flex items-center space-x-3">
-                                                    <div class="w-6 h-6 lg:w-8 lg:h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                        <i class="fab fa-upwork text-green-600 text-xs lg:text-sm"></i>
-                                                    </div>
-                                                    <span class="font-medium text-sm lg:text-base">Upwork</span>
-                                                </div>
-                                            </td>
-                                            <td class="py-4 text-gray-500 text-sm">Withdraw</td>
-                                            <td class="py-4 text-gray-500 text-sm">Apr 11, 2022</td>
-                                            <td class="py-4 font-semibold text-sm lg:text-base">$841.00</td>
-                                            <td class="py-4">
-                                                <span class="px-2 lg:px-3 py-1 bg-orange-100 text-orange-800 text-xs lg:text-sm rounded-full">Pending</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="border-t border-gray-100">
-                                            <td class="py-4">
-                                                <div class="flex items-center space-x-3">
-                                                    <img src="/assets/images/people/avatar-7.jpg" alt="Joe" class="w-6 h-6 lg:w-8 lg:h-8 rounded-full flex-shrink-0">
-                                                    <span class="font-medium text-sm lg:text-base">Send to Joe</span>
-                                                </div>
-                                            </td>
-                                            <td class="py-4 text-gray-500 text-sm">Transfer</td>
-                                            <td class="py-4 text-gray-500 text-sm">Apr 11, 2022</td>
-                                            <td class="py-4 font-semibold text-sm lg:text-base">$645.00</td>
-                                            <td class="py-4">
-                                                <span class="px-2 lg:px-3 py-1 bg-orange-100 text-orange-800 text-xs lg:text-sm rounded-full">Pending</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Right Column - My Card -->
-                    <div class="space-y-4 lg:space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
                         <!-- My Card -->
                         <div class="bg-white p-4 lg:p-6 rounded-xl border border-gray-200">                            
                             <div class="bg-blue-600 text-white p-4 lg:p-6 rounded-xl mb-4 relative overflow-hidden credit-card max-w-[320px] w-full mx-auto">
@@ -354,27 +305,27 @@
                             </div>
 
                             <!-- Quick Actions -->
-                            <div class="grid grid-cols-4 gap-2 lg:gap-4 mb-4 lg:mb-6">
-                                <button class="flex flex-col items-center p-2 lg:p-3 rounded-lg border border-gray-200 hover:bg-black hover:text-white">
-                                    <i class="fas fa-plus text-blue-600 mb-1 lg:mb-2 text-sm lg:text-base"></i>
-                                    <span class="text-xs">Deposits</span>
-                                </button>
-                                <button class="flex flex-col items-center p-2 lg:p-3 rounded-lg border border-gray-200 hover:bg-black">
-                                    <i class="fas fa-paper-plane text-blue-600 mb-1 lg:mb-2 text-sm lg:text-base"></i>
-                                    <span class="text-xs">Send</span>
-                                </button>
-                                <button class="flex flex-col items-center p-2 lg:p-3 rounded-lg border border-gray-200 hover:bg-black">
-                                    <i class="fas fa-download text-blue-600 mb-1 lg:mb-2 text-sm lg:text-base"></i>
-                                    <span class="text-xs">Receive</span>
-                                </button>
-                                <button class="flex flex-col items-center p-2 lg:p-3 rounded-lg border border-gray-200 hover:bg-black">
-                                    <i class="fas fa-file-invoice text-blue-600 mb-1 lg:mb-2 text-sm lg:text-base"></i>
-                                    <span class="text-xs">Invoice</span>
-                                </button>
+                            <div class="grid grid-cols-4 gap-2 lg:gap-4 mb-4 lg:mb-6 py-3">
+                                <a href="/dashboard/deposit.html" class="action-button flex flex-col items-center justify-center p-3 rounded-lg border border-gray-200 aspect-square">
+                                    <i class="fas fa-plus text-blue-600 mb-2"></i>
+                                    <span class="text-xs text-gray-600">Deposits</span>
+                                </a>
+                                <a href="/dashboard/send.html" class="action-button flex flex-col items-center justify-center p-3 rounded-lg border border-gray-200 aspect-square">
+                                    <i class="fas fa-paper-plane text-blue-600 mb-2"></i>
+                                    <span class="text-xs text-gray-600">Send</span>
+                                </a>
+                                <a href="/dashboard/send.html" class="action-button flex flex-col items-center justify-center p-3 rounded-lg border border-gray-200 aspect-square">
+                                    <i class="fas fa-download text-blue-600 mb-2"></i>
+                                    <span class="text-xs text-gray-600">Receive</span>
+                                </a>
+                                <a href="/dashboard/deposit.html" class="action-button flex flex-col items-center justify-center p-3 rounded-lg border border-gray-200 aspect-square">
+                                    <i class="fas fa-receipt text-blue-600 mb-2"></i>
+                                    <span class="text-xs text-gray-600">Withdraw</span>
+                                </a>
                             </div>
                         </div>
                                             
-                        <div class="bg-white p-4 lg:p-6 rounded-xl border border-gray-200">
+                        <div class="bg-white p-4 lg:p-6 rounded-xl border border-gray-200 ">
                             <!-- Quick Transfer -->
                             <div>
                                 <h4 class="font-semibold mb-4 text-sm lg:text-base">Quick Transfer</h4>

@@ -21,7 +21,7 @@
         <!-- Sidebar -->
         <div id="sidebar" class="w-64 bg-[#1a1a1a] text-white flex flex-col fixed lg:relative z-50 h-full transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
             <!-- Logo -->
-            <div class="p-6 border-b border-gray-700">
+            <div class="p-6">
                 <div class="flex items-center space-x-3">
                     <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                         <i class="fas fa-chart-line text-white text-sm"></i>
@@ -35,7 +35,7 @@
             <!-- Navigation Menu -->
             <nav class="flex-1 py-6 overflow-y-auto">
                 <div class="space-y-2">
-                    <div class="text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
+                    <div class="hidden text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
                     
                     <a href="/dashboard/dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fa-solid fa-grid-2"></i>
@@ -56,6 +56,26 @@
                         <i class="fas fa-chart-pie"></i>
                         <span>Analytics</span>
                     </a>
+                </div>                
+
+                <div class="mt-8">
+                    <div class="text-xs text-gray-400 px-4 uppercase tracking-wider mb-4">OTHER PAGES</div>
+                    
+                    <a href="/index.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-table"></i>
+                        <span>Landing</span>
+                    </a>
+
+                    <a href="/auth/login.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </a>
+
+                    <a href="/auth/register.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Register</span>
+                    </a>
+
                 </div>
 
                 <div class="mt-8">
@@ -203,7 +223,7 @@
                 <div class="w-full mx-auto max-w-[1320px]">
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
                         <!-- Filter Sidebar -->
-                        <div class="lg:col-span-1">
+                        <div class="hidden lg:block lg:col-span-1">
                             <div class="bg-white p-6 rounded-xl border border-gray-200 sticky top-6">
                                 <h3 class="text-lg font-semibold mb-4">Filter Transactions</h3>
                                 

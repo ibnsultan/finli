@@ -20,7 +20,7 @@
         <!-- Sidebar -->
         <div id="sidebar" class="w-64 bg-[#1a1a1a] text-white flex flex-col fixed lg:relative z-50 h-full transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
             <!-- Logo -->
-            <div class="p-6 border-b border-gray-700">
+            <div class="p-6">
                 <div class="flex items-center space-x-3">
                     <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                         <i class="fas fa-chart-line text-white text-sm"></i>
@@ -34,7 +34,7 @@
             <!-- Navigation Menu -->
             <nav class="flex-1 py-6 overflow-y-auto">
                 <div class="space-y-2">
-                    <div class="text-xs text-gray-400 uppercase tracking-wider mb-4 px-4">MANAGE</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mb-4 px-4 hidden">MANAGE</div>
                     
                     <a href="/dashboard/dashboard.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
                         <i class="fa-solid fa-grid-2"></i>
@@ -55,6 +55,26 @@
                         <i class="fas fa-chart-pie"></i>
                         <span>Analytics</span>
                     </a>
+                </div>                
+
+                <div class="mt-8">
+                    <div class="text-xs text-gray-400 px-4 uppercase tracking-wider mb-4">OTHER PAGES</div>
+                    
+                    <a href="/index.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-table"></i>
+                        <span>Landing</span>
+                    </a>
+
+                    <a href="/auth/login.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </a>
+
+                    <a href="/auth/register.html" class="flex items-center space-x-3 px-5 py-3 text-white w-full">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Register</span>
+                    </a>
+
                 </div>
 
                 <div class="mt-8">
@@ -280,26 +300,75 @@
                                 <span class="text-xs text-gray-600">Check Out</span>
                             </a>
                         </div>
-
-                        <!-- Money Flow Chart -->
-                        <div class="bg-white p-6 rounded-xl border border-gray-200">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-lg font-semibold">Money Flow</h3>
-                                <div class="flex items-center space-x-4">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
-                                        <span class="text-sm text-gray-600">Income</span>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                                        <span class="text-sm text-gray-600">Expenses</span>
-                                    </div>
-                                    <select class="text-sm border border-gray-300 rounded px-2 py-1">
-                                        <option>This Month</option>
-                                    </select>
-                                </div>
+                        
+                        <!-- Recent Transactions -->
+                        <div class="bg-white p-4 lg:p-6 rounded-xl border border-gray-200">
+                            <div class="flex items-center justify-between mb-4 lg:mb-6">
+                                <h3 class="text-base lg:text-lg font-semibold">Recent Transaction</h3>
+                                <a href="/dashboard/transactions.html" class="text-blue-600 text-sm hover:underline">See All</a>
                             </div>
-                            <div id="moneyFlowChart" style="height: 200px;"></div>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full min-w-[500px]">
+                                    <thead>
+                                        <tr class="text-left text-gray-500 text-xs lg:text-sm">
+                                            <th class="pb-4 min-w-[120px]">Name</th>
+                                            <th class="pb-4 min-w-[80px]">Type</th>
+                                            <th class="pb-4 min-w-[80px]">Date</th>
+                                            <th class="pb-4 min-w-[80px]">Amount</th>
+                                            <th class="pb-4 min-w-[80px]">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="space-y-4">
+                                        <tr class="border-t border-gray-100">
+                                            <td class="py-4">
+                                                <div class="flex items-center space-x-3">
+                                                    <div class="w-6 h-6 lg:w-8 lg:h-8 bg-pink-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                        <i class="fab fa-figma text-pink-600 text-xs lg:text-sm"></i>
+                                                    </div>
+                                                    <span class="font-medium text-sm lg:text-base">Figma</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-4 text-gray-500 text-sm">Subscription</td>
+                                            <td class="py-4 text-gray-500 text-sm">Apr 11, 2022</td>
+                                            <td class="py-4 font-semibold text-sm lg:text-base">$640.00</td>
+                                            <td class="py-4">
+                                                <span class="px-2 lg:px-3 py-1 bg-green-100 text-green-800 text-xs lg:text-sm rounded-full">Success</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-t border-gray-100">
+                                            <td class="py-4">
+                                                <div class="flex items-center space-x-3">
+                                                    <div class="w-6 h-6 lg:w-8 lg:h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                        <i class="fab fa-upwork text-green-600 text-xs lg:text-sm"></i>
+                                                    </div>
+                                                    <span class="font-medium text-sm lg:text-base">Upwork</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-4 text-gray-500 text-sm">Withdraw</td>
+                                            <td class="py-4 text-gray-500 text-sm">Apr 11, 2022</td>
+                                            <td class="py-4 font-semibold text-sm lg:text-base">$841.00</td>
+                                            <td class="py-4">
+                                                <span class="px-2 lg:px-3 py-1 bg-orange-100 text-orange-800 text-xs lg:text-sm rounded-full">Pending</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-t border-gray-100">
+                                            <td class="py-4">
+                                                <div class="flex items-center space-x-3">
+                                                    <img src="/assets/images/people/avatar-7.jpg" alt="Joe" class="w-6 h-6 lg:w-8 lg:h-8 rounded-full flex-shrink-0">
+                                                    <span class="font-medium text-sm lg:text-base">Send to Joe</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-4 text-gray-500 text-sm">Transfer</td>
+                                            <td class="py-4 text-gray-500 text-sm">Apr 11, 2022</td>
+                                            <td class="py-4 font-semibold text-sm lg:text-base">$645.00</td>
+                                            <td class="py-4">
+                                                <span class="px-2 lg:px-3 py-1 bg-orange-100 text-orange-800 text-xs lg:text-sm rounded-full">Pending</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
                         <!-- Conversion & Currency -->
