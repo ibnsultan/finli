@@ -572,6 +572,9 @@
   .h-\[300px\] {
     height: 300px;
   }
+  .h-\[min-content\] {
+    height: min-content;
+  }
   .h-full {
     height: 100%;
   }
@@ -635,12 +638,6 @@
   .w-32 {
     width: calc(var(--spacing) * 32);
   }
-  .w-40 {
-    width: calc(var(--spacing) * 40);
-  }
-  .w-44 {
-    width: calc(var(--spacing) * 44);
-  }
   .w-48 {
     width: calc(var(--spacing) * 48);
   }
@@ -688,12 +685,6 @@
   }
   .min-w-\[120px\] {
     min-width: 120px;
-  }
-  .min-w-\[160px\] {
-    min-width: 160px;
-  }
-  .min-w-\[220px\] {
-    min-width: 220px;
   }
   .min-w-\[500px\] {
     min-width: 500px;
@@ -862,6 +853,9 @@
       margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
+  .gap-x-2 {
+    column-gap: calc(var(--spacing) * 2);
+  }
   .space-x-1 {
     :where(& > :not(:last-child)) {
       --tw-space-x-reverse: 0;
@@ -890,12 +884,8 @@
       margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));
     }
   }
-  .space-x-6 {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(calc(var(--spacing) * 6) * var(--tw-space-x-reverse));
-      margin-inline-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-x-reverse)));
-    }
+  .gap-y-4 {
+    row-gap: calc(var(--spacing) * 4);
   }
   .divide-y {
     :where(& > :not(:last-child)) {
@@ -1050,9 +1040,6 @@
   }
   .bg-\[\#313131\] {
     background-color: #313131;
-  }
-  .bg-\[\#\] {
-    background-color: #;
   }
   .bg-black {
     background-color: var(--color-black);
@@ -2032,6 +2019,11 @@
       margin-left: calc(var(--spacing) * 0);
     }
   }
+  .lg\:block {
+    @media (width >= 64rem) {
+      display: block;
+    }
+  }
   .lg\:hidden {
     @media (width >= 64rem) {
       display: none;
@@ -2071,6 +2063,11 @@
     @media (width >= 64rem) {
       --tw-translate-x: calc(var(--spacing) * 0);
       translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
+  .lg\:grid-cols-1 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
     }
   }
   .lg\:grid-cols-2 {
@@ -2119,6 +2116,11 @@
         margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));
         margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));
       }
+    }
+  }
+  .lg\:gap-y-6 {
+    @media (width >= 64rem) {
+      row-gap: calc(var(--spacing) * 6);
     }
   }
   .lg\:p-3 {
