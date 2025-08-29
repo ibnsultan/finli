@@ -2,6 +2,8 @@
 
 A modern, responsive financial dashboard built with HTML, CSS (Tailwind), and vanilla JavaScript. Features beautiful charts, wallet management, analytics, and user settings.
 
+demo: [Access demo from here](https://finli.abdulbasit.dev)
+
 ## Features
 
 - **Dashboard**: Overview of financial metrics with interactive charts
